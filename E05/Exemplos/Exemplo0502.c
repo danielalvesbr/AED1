@@ -76,6 +76,39 @@ method_02a ( 5 );
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_02 ( )
 
+/**
+Method_03a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_03a ( int x )
+{
+// definir dado local
+int y = 1; // controle
+int z = 0;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y <= x )
+{
+// vincular o valor a ser mostrado ao controle
+z = 2 * y;
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo valor controlado
+y = y + 1;
+} // end while
+} // end method_03a( )
+/**
+Method_03.
+*/
+void method_03 ( )
+{
+// identificar
+IO_id ( " Method_03 - v0.0" );
+// executar o metodo auxiliar
+method_03a ( 5 );
+// encerrar
+IO_pause ( "Apertar ENTER para continuar" );
+} // end method_03 ( )
+
 int main ( )
 {
     // definir dado
@@ -90,7 +123,7 @@ int main ( )
         IO_println ( "0 - Parar" );
         IO_println ( "1 - Mostrar certa quantidade de valores" );
         IO_println ( "2 - Mostrar certa quantidade de valores de 2 em 2" );
-        IO_println ( "3 - Mostrar certa quantidade de valores" );
+        IO_println ( "3 - Mostrar certa quantidade de valores pares" );
         IO_println ( "" );
         x = IO_readint ( "Entrar com uma opcao: " );
         // testar valor
@@ -115,9 +148,9 @@ int main ( )
 ---------------------------------------------- documentacao complementar
 n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de valores de 2 em 2.
+Mostrar certa quantidade de valores de 2 em 2 (pares).
 ---------------------------------------------- previsao de testes
-a.) 5 -> { 2, 4, 6, 8, 10 }
+a.) 5 
 ---------------------------------------------- historico
 Versao Data Modificacao
 0.1 27/09 esboco

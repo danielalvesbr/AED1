@@ -80,7 +80,7 @@ n/d!
 ---------------------------------------------- notas / observacoes / comentarios
 Mostrar certa quantidade de valores.
 ---------------------------------------------- previsao de testes
-a.) 5 -> { 1, 2, 3, 4, 5 }
+a.) 5 
 ---------------------------------------------- historico
 Versao Data Modificacao
 0.1 27/09 esboco

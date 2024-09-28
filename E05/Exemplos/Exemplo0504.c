@@ -1,5 +1,5 @@
 /*
-    Exemplo0404 - v0.0. - 22 / 09 / 2024
+    Exemplo0504 - v0.0. - 28 / 09 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -13,228 +13,159 @@ void method_00 ( void )
 } // end method_00 ( )
 
 /**
-Method_01 - Repeticao para ler certa quantidade de valores.
+Method_01a - Mostrar certa quantidade de valores.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_01a ( int x )
+{
+    // definir dado local
+    int y = 1; // controle
+    // repetir enquanto controle menor que a quantidade desejada
+    while ( y <= x )
+    {
+        // mostrar valor
+        IO_printf ( "%s%d\n", "Valor = ", y );
+        // passar ao proximo
+        y = y + 1;
+    } // end if
+} // end method_01a( )
+/**
+Method_01 - Mostrar certa quantidade de valores.
+OBS.: Preparacao e disparo de outro metodo.
 */
 void method_01 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-// identificar
-IO_id ( "Method 01 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// mostrar valor lido
-printf ( "\n%s%d", "valor = ", valor );
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// encerrar
-IO_pause ( "Apertar ENTER para continuar" );
+    // identificar
+    IO_id ( " Method_01 - v0.0" );
+    // executar o metodo auxiliar
+    method_01a ( 5 );
+    // encerrar
+    IO_pause ( "Apertar ENTER para continuar" );
 } // end method_01 ( )
 
 /**
-Funcao para determinar se valor inteiro e' positivo.
-@return true, se positivo; false, caso contrario
-@param x - valor a ser testado
+Method_02a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool positive ( int x )
+void method_02a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao
-if ( x > 0 )
+int y = 1; // controle
+int z = 2;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y <= x )
 {
-result = true;
-} // end if
-return ( result );
-} // end positive ( )
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo par
+z = z + 2;
+// passar ao proximo valor controlado
+y = y + 1;
+} // end while
+} // end method_02a( )
 /**
-Method_02 - Ler valores e contar positivos.
+Method_02.
 */
 void method_02 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
-IO_id ( "Method02 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo
-if ( positive ( valor ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos = ", contador );
+IO_id ( "Method_02 - v0.0" );
+// executar o metodo auxiliar
+method_02a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_02 ( )
 
 /**
-Funcao para determinar se valor inteiro pertence a intervalo aberto.
-@return true, se pertencer; false, caso contrario
-@param x - valor a ser testado
-@param inferior - limite inferior do intervalo
-@param superior - limite superior do intervalo
+Method_03a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool belongsTo ( int x, int inferior, int superior )
+void method_03a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao
-if ( inferior < x && x < superior )
+int y = 1; // controle
+int z = 0;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y <= x )
 {
-result = true;
-} // end if
-return ( result );
-} // end belongsTo ( )
+// vincular o valor a ser mostrado ao controle
+z = 2 * y;
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo valor controlado
+y = y + 1;
+} // end while
+} // end method_03a( )
 /**
-Method_03 - Ler valores e contar positivos menores que 100.
+Method_03.
 */
 void method_03 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
-IO_id ( "Method_03 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo
-if ( belongsTo ( valor, 0, 100 ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 = ", contador );
+IO_id ( " Method_03 - v0.0" );
+// executar o metodo auxiliar
+method_03a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_03 ( )
 
 /**
-Funcao para determinar se valor inteiro e' par.
-@return true, se par; false, caso contrario
-@param x - valor a ser testado
+Method_04a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool even ( int x )
+void method_04a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao ( resto inteiro (%) da divisao por 2 igual a zero )
-if ( x % 2 == 0 )
+int y = x; // controle
+int z = 0;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y > 0 )
 {
-result = true;
-} // end if
-return ( result );
-} // end even ( )
+// vincular o valor a ser mostrado ao controle
+z = 2 * y;
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo valor controlado
+y = y - 1;
+} // end while
+} // end method_04a( )
 /**
-Method_04 - Ler valores e contar positivos menores que 100 e pares.
+Method_04.
 */
 void method_04 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
 IO_id ( "Method_04 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo menor que 100 e par
-if ( belongsTo ( valor, 0, 100 ) && even ( valor ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 e pares = ", contador );
+// executar o metodo auxiliar
+method_04a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_04 ( )
 
 /**
-Method05 - Ler valores e contar positivos menores que 100 e pares (alternativo).
+Method_05a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_05a ( int x )
+{
+// definir dado local
+int y = 0; // controle
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = x; y > 0; y = y-1 )
+{
+// mostrar valor
+IO_printf ( "%d: %d\n", y, (2*y) );
+} // end for
+} // end method_05a( )
+/**
+Method_05.
 */
 void method_05 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
-bool ok = false;
 // identificar
-IO_id ( "EXEMPLO0405 - Method_05 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo menor que 100 e par
-ok = belongsTo ( valor, 0, 100 );
-ok = ok && even ( valor );
-if ( ok )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 e pares = ", contador );
+IO_id ( "Method_05 - v0.0" );
+// executar o metodo auxiliar
+method_05a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_05 ( )
@@ -247,15 +178,15 @@ int main ( )
     do
     {
         // identificar
-        IO_id ( "EXEMPLO0404 - Programa - v0.0" );
+        IO_id ( "EXEMPLO0504 - Programa - v0.0" );
         // ler do teclado
         IO_println ( "Opcoes" );
         IO_println ( "0 - Parar" );
-        IO_println ( "1 - Repeticao para ler certa quantidade de valores" );
-        IO_println ( "2 - Ler valores e contar positivos" );
-        IO_println ( "3 - Ler valores e contar positivos menores que 100" );
-        IO_println ( "4 - Ler valores e contar positivos e pares menores que 100" );
-        IO_println ( "5 - Ler valores e contar positivos e pares menores que 100 (alternativo)" );
+        IO_println ( "1 - Mostrar certa quantidade de valores" );
+        IO_println ( "2 - Mostrar certa quantidade de valores de 2 em 2" );
+        IO_println ( "3 - Mostrar certa quantidade de valores pares" );
+        IO_println ( "4 - Mostrar certa quantidade de valores pares (decrescente)" );
+        IO_println ( "5 - Mostrar certa quantidade de valores pares (decrescente)" );
         IO_println ( "" );
         x = IO_readint ( "Entrar com uma opcao: " );
         // testar valor
@@ -280,14 +211,14 @@ int main ( )
 
 /*
 ---------------------------------------------- documentacao complementar
-Nao apresentou erros!
+n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Pede uma cadeia e retorna apenas os valores positivos e pares menores que 100!
+Mostrar certa quantidade de valores de 2 em 2 (pares) do maior para o menor.
 ---------------------------------------------- previsao de testes
-a.) 101,-4,532,3,94,-325
+a.) 5 
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 22/09 esboco
+0.1 28/09 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

@@ -115,7 +115,7 @@ n/d!
 ---------------------------------------------- notas / observacoes / comentarios
 Mostrar certa quantidade de valores de 2 em 2.
 ---------------------------------------------- previsao de testes
-a.) 5 -> { 2, 4, 6, 8, 10 }
+a.) 5 
 ---------------------------------------------- historico
 Versao Data Modificacao
 0.1 27/09 esboco

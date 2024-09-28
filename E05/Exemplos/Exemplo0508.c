@@ -1,5 +1,5 @@
 /*
-    Exemplo0408 - v0.0. - 22 / 09 / 2024
+    Exemplo0508 - v0.0. - 28 / 09 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -13,407 +13,330 @@ void method_00 ( void )
 } // end method_00 ( )
 
 /**
-Method_01 - Repeticao para ler certa quantidade de valores.
+Method_01a - Mostrar certa quantidade de valores.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_01a ( int x )
+{
+    // definir dado local
+    int y = 1; // controle
+    // repetir enquanto controle menor que a quantidade desejada
+    while ( y <= x )
+    {
+        // mostrar valor
+        IO_printf ( "%s%d\n", "Valor = ", y );
+        // passar ao proximo
+        y = y + 1;
+    } // end if
+} // end method_01a( )
+/**
+Method_01 - Mostrar certa quantidade de valores.
+OBS.: Preparacao e disparo de outro metodo.
 */
 void method_01 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-// identificar
-IO_id ( "Method 01 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// mostrar valor lido
-printf ( "\n%s%d", "valor = ", valor );
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// encerrar
-IO_pause ( "Apertar ENTER para continuar" );
+    // identificar
+    IO_id ( " Method_01 - v0.0" );
+    // executar o metodo auxiliar
+    method_01a ( 5 );
+    // encerrar
+    IO_pause ( "Apertar ENTER para continuar" );
 } // end method_01 ( )
 
 /**
-Funcao para determinar se valor inteiro e' positivo.
-@return true, se positivo; false, caso contrario
-@param x - valor a ser testado
+Method_02a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool positive ( int x )
+void method_02a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao
-if ( x > 0 )
+int y = 1; // controle
+int z = 2;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y <= x )
 {
-result = true;
-} // end if
-return ( result );
-} // end positive ( )
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo par
+z = z + 2;
+// passar ao proximo valor controlado
+y = y + 1;
+} // end while
+} // end method_02a( )
 /**
-Method_02 - Ler valores e contar positivos.
+Method_02.
 */
 void method_02 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
-IO_id ( "Method02 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo
-if ( positive ( valor ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos = ", contador );
+IO_id ( "Method_02 - v0.0" );
+// executar o metodo auxiliar
+method_02a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_02 ( )
 
 /**
-Funcao para determinar se valor inteiro pertence a intervalo aberto.
-@return true, se pertencer; false, caso contrario
-@param x - valor a ser testado
-@param inferior - limite inferior do intervalo
-@param superior - limite superior do intervalo
+Method_03a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool belongsTo ( int x, int inferior, int superior )
+void method_03a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao
-if ( inferior < x && x < superior )
+int y = 1; // controle
+int z = 0;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y <= x )
 {
-result = true;
-} // end if
-return ( result );
-} // end belongsTo ( )
+// vincular o valor a ser mostrado ao controle
+z = 2 * y;
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo valor controlado
+y = y + 1;
+} // end while
+} // end method_03a( )
 /**
-Method_03 - Ler valores e contar positivos menores que 100.
+Method_03.
 */
 void method_03 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
-IO_id ( "Method_03 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo
-if ( belongsTo ( valor, 0, 100 ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 = ", contador );
+IO_id ( " Method_03 - v0.0" );
+// executar o metodo auxiliar
+method_03a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_03 ( )
 
 /**
-Funcao para determinar se valor inteiro e' par.
-@return true, se par; false, caso contrario
-@param x - valor a ser testado
+Method_04a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
 */
-bool even ( int x )
+void method_04a ( int x )
 {
 // definir dado local
-bool result = false;
-// testar a condicao ( resto inteiro (%) da divisao por 2 igual a zero )
-if ( x % 2 == 0 )
+int y = x; // controle
+int z = 0;
+// repetir enquanto controle menor que a quantidade desejada
+while ( y > 0 )
 {
-result = true;
-} // end if
-return ( result );
-} // end even ( )
+// vincular o valor a ser mostrado ao controle
+z = 2 * y;
+// mostrar valor
+IO_printf ( "%d: %d\n", y, z );
+// passar ao proximo valor controlado
+y = y - 1;
+} // end while
+} // end method_04a( )
 /**
-Method_04 - Ler valores e contar positivos menores que 100 e pares.
+Method_04.
 */
 void method_04 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
 // identificar
 IO_id ( "Method_04 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo menor que 100 e par
-if ( belongsTo ( valor, 0, 100 ) && even ( valor ) )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 e pares = ", contador );
+// executar o metodo auxiliar
+method_04a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_04 ( )
 
 /**
-Method05 - Ler valores e contar positivos menores que 100 e pares (alternativo).
+Method_05a - Mostrar certa quantidade de valores pares.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_05a ( int x )
+{
+// definir dado local
+int y = 0; // controle
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = x; y > 0; y = y-1 )
+{
+// mostrar valor
+IO_printf ( "%d: %d\n", y, (2*y) );
+} // end for
+} // end method_05a( )
+/**
+Method_05.
 */
 void method_05 ( )
 {
-// definir dado
-int quantidade = 0;
-int valor = 0;
-int controle = 0;
-int contador = 0;
-bool ok = false;
 // identificar
-IO_id ( "EXEMPLO0405 - Method_05 - v0.0" );
-// ler do teclado
-quantidade = IO_readint ( "Entrar com uma quantidade: " );
-// repetir para a quantidade de vezes informada
-controle = 1;
-while ( controle <= quantidade )
-{
-// ler valor do teclado
-valor = IO_readint ( IO_concat (
-IO_concat ( "", IO_toString_d ( controle ) ),
-": " ) );
-// testar e contar se valor for positivo menor que 100 e par
-ok = belongsTo ( valor, 0, 100 );
-ok = ok && even ( valor );
-if ( ok )
-{
-contador = contador + 1;
-} // end if
-// passar ao proximo valor
-controle = controle + 1;
-} // end while
-// mostrar a quantidade de valores positivos
-IO_printf ( "%s%d\n", "Positivos menores que 100 e pares = ", contador );
+IO_id ( "Method_05 - v0.0" );
+// executar o metodo auxiliar
+method_05a ( 5 );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_05 ( )
 
 /**
-Funcao para determinar se caractere e' letra minuscula.
-@return true, se par; false, caso contrario
-@param x - valor a ser testado
+somarValores - funcao para somar certa quantidade de pares.
+@return soma dos valores
+@param x - quantidade de valores a serem mostrados
 */
-bool isLowerCase ( char x )
+int somarValores ( int x )
 {
-// definir dado local
-bool result = false;
-// testar a condicao
-if ( 'a' <= x && x <= 'z' )
+// definir dados locais
+int soma = 1;
+int y = 0; // controle
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = 1; y <= (x-1); y = y+1 )
 {
-result = true;
-} // end if
-return ( result );
-} // end isLowerCase ( )
+// mostrar valor
+IO_printf ( "%d: %d\n", y, (2*y) );
+// somar valor
+soma = soma + (2*y);
+} // end for
+// retornar resultado
+return ( soma );
+} // end somarValores ( )
 /**
-Method_06 - Ler palavra e contar letras minusculas.
+Method_06.
 */
 void method_06 ( )
 {
 // definir dado
-chars palavra = IO_new_chars ( STR_SIZE );
-int tamanho = 0;
-int posicao = 0;
-char simbolo = '_';
-int contador = 0;
+int soma = 0;
 // identificar
-IO_id ( "Method06 - v0.0" );
-// ler do teclado
-palavra = IO_readstring ( "Entrar com uma palavra: " );
-// determinar a quantidade de simbolos na palavra
-tamanho = strlen ( palavra );
-// repetir para a quantidade de vezes informada
-for ( posicao = 0; posicao < tamanho; posicao = posicao + 1 )
-{
-// isolar um simbolo por vez
-simbolo = palavra [ posicao ];
-// testar e contar se caractere e' letra minuscula
-if ( isLowerCase ( simbolo ) )
-{
-contador = contador + 1;
-} // end if
-} // end for
-// mostrar a quantidade de minusculas
-IO_printf ( "%s%d\n", "Minusculas = ", contador );
+IO_id ( "Method_06 - v0.0" );
+// chamar e receber resultado da funcao
+soma = somarValores ( 5 );
+// mostrar resultado
+IO_printf ( "soma de pares = %d\n", soma );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_06 ( )
 
 /**
-Method_07 - Ler palavra, contar e mostrar letras minusculas.
+somarFracao1 - funcao para somar certa quantidade de fracoes.
+@return soma dos valores
+@param x - quantidade de valores a serem mostrados
+*/
+double somarFracao1 ( int x )
+{
+// definir dados locais
+double soma = 1.0;
+double numerador = 0.0;
+double denominador = 0.0;
+int y = 0 ; // controle
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = 1; y <= (x-1); y = y+1 )
+{
+// calcular numerador
+numerador = 1.0;
+// calcular denominador
+denominador = 2.0*y;
+// mostrar valor
+IO_printf ( "%d: %7.4lf/%7.4lf = %lf\n",
+y, numerador, denominador, (numerador/denominador) );
+// somar valor
+soma = soma + (1.0)/(2.0*y);
+} // end for
+// retornar resultado
+return ( soma );
+} // end somarFracao1 ( )
+/**
+Method_07.
 */
 void method_07 ( )
 {
 // definir dado
-chars palavra = IO_new_chars ( STR_SIZE );
-int tamanho = 0;
-int posicao = 0;
-char simbolo = '_';
-int contador = 0;
+double soma = 0.0;
 // identificar
-IO_id ( "Method07 - v0.0" );
-// ler do teclado
-palavra = IO_readstring ( "Entrar com uma palavra: " );
-// determinar a quantidade de simbolos na palavra
-tamanho = strlen ( palavra );
-// repetir para a quantidade de vezes informada
-for ( posicao = 0; posicao < tamanho; posicao = posicao + 1 )
-{
-// isolar um simbolo por vez
-simbolo = palavra [ posicao ];
-// testar e contar se caractere e' letra minuscula
-if ( isLowerCase ( simbolo ) )
-{
-// mostrar
-IO_printf ( "%c ", simbolo );
-// contar
-contador = contador + 1;
-} // end if
-} // end for
-// mostrar a quantidade de minusculas
-IO_printf ( "\n%s%d\n", "Minusculas = ", contador );
+IO_id ( "Method_07 - v0.0" );
+// chamar e receber resultado da funcao
+soma = somarFracao1 ( 5 );
+// mostrar resultado
+IO_printf ( "soma de fracoes = %lf\n", soma );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_07 ( )
 
 /**
-Method_08 - Ler palavra, contar e mostrar letras minusculas (alternativo).
+somarFracao2 - funcao para somar certa quantidade de fracoes.
+@return soma dos valores
+@param x - quantidade de valores a serem mostrados
+*/
+double somarFracao2 ( int x )
+{
+// definir dados locais
+double soma = 1.0;
+double numerador = 0.0;
+double denominador = 0.0;
+int y = 0 ; // controle
+// mostrar primeiro valor
+IO_printf ( "%d: %7.4lf/%7.4lf\n", 1, 1.0, soma );
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = 1; y <= (x-1); y = y+1 )
+{
+// calcular numerador
+numerador = 2.0*y-1;
+// calcular denominador
+denominador = 2.0*y;
+// mostrar valor
+IO_printf ( "%d: %7.4lf/%7.4lf = %lf\n",
+y+1, numerador, denominador, (numerador/denominador) );
+// somar valor
+soma = soma + numerador / denominador;
+} // end for
+// retornar resultado
+return ( soma );
+} // end somarFracao2 ( )
+/**
+Method_08.
 */
 void method_08 ( )
 {
 // definir dado
-chars palavra = IO_new_chars ( STR_SIZE );
-int tamanho = 0;
-int posicao = 0;
-char simbolo = '_';
-int contador = 0;
-chars minusculas = IO_new_chars ( STR_SIZE );
-strcpy ( minusculas, STR_EMPTY ); // vazio
+double soma = 0.0;
 // identificar
-IO_id ( "Method08 - v0.0" );
-// ler do teclado
-palavra = IO_readstring ( "Entrar com uma palavra: " );
-// determinar a quantidade de simbolos na palavra
-tamanho = strlen ( palavra );
-// repetir para a quantidade de vezes informada
-for ( posicao = 0; posicao < tamanho; posicao = posicao + 1 )
-{
-// isolar um simbolo por vez
-simbolo = palavra [ posicao ];
-// testar e contar as letras minusculas de uma palavra
-if ( isLowerCase ( simbolo ) )
-{
-// concatenar simbolo encontrado
-minusculas = IO_concat ( minusculas, IO_toString_c ( simbolo ) );
-// contar
-contador = contador + 1;
-} // end if
-} // end for
-// mostrar a quantidade de minusculas
-IO_printf ( "\n%s%d [%s]\n", "Minusculas = ", contador, minusculas );
+IO_id ( "Method_08 - v0.0" );
+// chamar e receber resultado da funcao
+soma = somarFracao2 ( 5 );
+// mostrar resultado
+IO_printf ( "soma de fracoes = %lf\n", soma );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_08 ( )
 
 /**
-Funcao para determinar se caractere e' digito.
-@return true, se par; false, caso contrario
-@param x - valor a ser testado
+somarFracao3 - funcao para somar certa quantidade de fracoes.
+@return soma dos valores
+@param x - quantidade de valores a serem mostrados
 */
-bool isDigit ( char x )
+double somarFracao3 ( int x )
 {
-// definir dado local
-bool result = false;
-// testar a condicao
-if ( '0' <= x && x <= '9' )
+// definir dados locais
+double soma = 1.0;
+int y = 0 ; // controle
+// mostrar primeiro valor
+IO_printf ( "%d: %7.4lf/%7.4lf\n", 1, 1.0, soma );
+// repetir enquanto controle menor que a quantidade desejada
+for ( y = 1; y < x; y = y+1 )
 {
-result = true;
-} // end if
-return ( result );
-} // end isDigit ( )
+// mostrar valor
+IO_printf ( "%d: %7.4lf/%7.4lf = %7.4lf\n",
+y+1, (2.0*y), (2.0*y+1), ((2.0*y)/(2.0*y+1)) );
+// somar valor
+soma = soma + (2.0*y)/(2.0*y+1);
+} // end for
+// retornar resultado
+return ( soma );
+} // end somarFracao3 ( )
 /**
-Method_09 - Ler palavra e contar os algarismos.
+Method_09.
 */
 void method_09 ( )
 {
 // definir dado
-chars palavra = IO_new_chars ( STR_SIZE );
-int tamanho = 0;
-int posicao = 0;
-char simbolo = '_';
-int contador = 0;
+double soma = 0.0;
 // identificar
-IO_id ( "Method09 - v0.0" );
-// ler do teclado
-palavra = IO_readstring ( "Entrar com caracteres: " );
-// determinar a quantidade de simbolos
-tamanho = strlen ( palavra );
-// repetir para a quantidade de vezes informada
-for ( posicao = 0; posicao < tamanho; posicao = posicao + 1 )
-{
-// isolar um simbolo por vez
-simbolo = palavra [ posicao ];
-// testar e contar os algarismos em uma cadeia de caracteres
-if ( isDigit ( simbolo ) )
-{
-// mostrar
-IO_printf ( "%c ", simbolo );
-// contar
-contador = contador + 1;
-} // end if
-} // end for
-// mostrar a quantidade de digitos
-IO_printf ( "\n%s%d\n", "Algarismos = ", contador );
+IO_id ( "EXEMPLO0509 - Method_09 - v0.0" );
+// chamar e receber resultado da funcao
+soma = somarFracao3 ( 5 );
+// mostrar resultado
+IO_printf ( "soma de fracoes = %lf\n", soma );
 // encerrar
 IO_pause ( "Apertar ENTER para continuar" );
 } // end method_09 ( )
@@ -426,19 +349,19 @@ int main ( )
     do
     {
         // identificar
-        IO_id ( "EXEMPLO0408 - Programa - v0.0" );
+        IO_id ( "EXEMPLO0508 - Programa - v0.0" );
         // ler do teclado
         IO_println ( "Opcoes" );
         IO_println ( "0 - Parar" );
-        IO_println ( "1 - Repeticao para ler certa quantidade de valores" );
-        IO_println ( "2 - Ler valores e contar positivos" );
-        IO_println ( "3 - Ler valores e contar positivos menores que 100" );
-        IO_println ( "4 - Ler valores e contar positivos e pares menores que 100" );
-        IO_println ( "5 - Ler valores e contar positivos e pares menores que 100 (alternativo)" );
-        IO_println ( "6 - Ler palavra e contar minusculas" );
-        IO_println ( "7 - Ler palavra, contar e mostrar minusculas" );
-        IO_println ( "8 - Ler palavra, contar e mostrar minusculas (alternativo)" );
-        IO_println ( "9 - Ler palavra e contar os algarismos" );
+        IO_println ( "1 - Mostrar certa quantidade de valores" );
+        IO_println ( "2 - Mostrar certa quantidade de valores de 2 em 2" );
+        IO_println ( "3 - Mostrar certa quantidade de valores pares" );
+        IO_println ( "4 - Mostrar certa quantidade de valores pares (decrescente)" );
+        IO_println ( "5 - Mostrar certa quantidade de valores pares (decrescente)" );
+        IO_println ( "6 - Mostrar a soma dos pares de certa quantidade de valores pares" );
+        IO_println ( "7 - Mostrar a soma de 1 dividido pelos pares de certa quantidade de valores pares" );
+        IO_println ( "8 - Mostrar a soma de (x-1) dividido pelos pares (x) de certa quantidade de valores pares" );
+        IO_println ( "9 - Mostrar a soma de (x) dividido pelos pares (x+1) de certa quantidade de valores pares" );
         IO_println ( "" );
         x = IO_readint ( "Entrar com uma opcao: " );
         // testar valor
@@ -467,14 +390,15 @@ int main ( )
 
 /*
 ---------------------------------------------- documentacao complementar
-Nao apresentou erros!
+n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Pede uma palavra, conta e retorna os algarismos!
+Mostrar a soma +1 (de fracoes) dos valores -1(x) dividido por certa quantidade 
+de valores(x+1) de 2 em 2 (pares).
 ---------------------------------------------- previsao de testes
-a.) Te5t4nd0
+a.) 5 
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 22/09 esboco
+0.1 28/09 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa
