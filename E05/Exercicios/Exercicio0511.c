@@ -1,7 +1,6 @@
 /*
-    Exercicio0411 - v0.0. - 23 / 09 / 2024
+    Exercicio0511 - v0.0. - 28 / 09 / 2024
     Autor: Daniel Alves Goncalves
-    PROGRAMA DE ARRANJO FUNCIONAL PARA EXIBIR OS VALORES INSERIDOS NO FINAL
 */
 // dependencias
 #include "stdio.h"
@@ -21,61 +20,46 @@ void method_00 ( void )
 void method_01 ( void )
 {
     // definir dado
-    double n = 0;
-    double x = 0;
-    double y = 0;
-    double z = 0;
-    int Vd = 0;
-    int Vf = 0;
-    double aux = 0;
-    char palavra[80];
+    int n = 0;
+    int cont = 0;
+    int termo = 1;  // termo diferente de zero para desconsiderar o zero na resposta
+    int resposta[100];
+    
     // identificar
     printf( "Method_01 - v0.0" );
     // ler do teclado o valor inicial
     printf( "\n%s","Entrar com a quantidade de termos: " );
-    scanf( "%lf", &n ); getchar( );
-    
-    printf( "\n%s","Entrar com o limite inferior (a): " );
-    scanf( "%lf", &x ); getchar( );
-
-    while( x>y )
-    {
-        printf( "\n%s","Entrar com o limite superior (b): " );
-        scanf( "%lf", &y ); getchar( );
-    }
-    // mostrar os valores preenchidos
-    printf( "Quantidade de termos (n): %lf \nLimite (x:y): [%lf:%lf]\n", n, x, y );
-
+    scanf( "%d", &n ); getchar( );
    
-    for( int i = 0; i < n; i++ ) // verificar se ainda nao chegou na quantidade definida
+    // mostrar os valores preenchidos
+    printf( "%s%d","Quantidade de termos: ",n );
+
+    while(cont < n) // verificar se ainda nao chegou na quantidade definida
     {                            // criar a repeticao para gravar no arranjo
-        printf( "\nDigite o valor do %d termo: ", i+1 );
-        scanf( "%lf", &z );
-        // armazena o valor digitado no arranjo
-        palavra[i] = z; 
-        if (x <= z && z <= y) // se dentro do intervalo definido
+        if (termo % 4 == 0) // se divisivel por 4
         {  
-            printf( "Valor esta DENTRO do intervalo\n" );
-            Vd = Vd + 1;
+            resposta[cont] = termo;
+            termo = termo + 1;
+            cont = cont + 1;
         }
         else // se nao
         {
-            printf( "Valor esta FORA do intervalo\n" );
-            Vf = Vf + 1;
+            termo = termo + 1;
         }
     }
     while (getchar() != '\n') //Limpar o buffer do getchar
         continue;
 
-    printf( "\nValores DENTRO do intervalo: %d", Vd );
-    printf( "\nValores FORA do intervalo: %d", Vf );
     printf( "\nValores { " );
-    for (int i = 0; palavra[i] != '\0'; i++) // repeticao para exibir os valores do arranjo
+    for (int i = 0; i < cont; i++) // repeticao para exibir os valores do arranjo
     {
-        aux = palavra[i];
-        printf( "%lf, ", aux );
+        printf( "%d", resposta[i] );
+        if(i < (cont-1))
+        {
+            printf("%s",", ");
+        }
     }
-    printf( "}" );
+    printf( " }" );
     // encerrar
     
     printf( "\nApertar ENTER para continuar.\n\n" );
@@ -94,12 +78,12 @@ int main ( )
     do
     {
         // identificar
-        printf( "EXERCICIO0411 - Programa - v0.0" );
+        printf( "EXERCICIO0511 - Programa - v0.0" );
         printf("\nAutor: Daniel Alves Goncalves");
         // ler do teclado
         printf ( "\n%s\n","Opcoes" );
         printf ( "\n%s","0 - Parar");
-        printf ( "\n%s","1 - Repeticao com teste no inicio" );
+        printf ( "\n%s","1 - 0511" );
         printf ( "\n" );
         
         printf ("\n%s","Entrar com uma opcao: " );
@@ -124,20 +108,14 @@ int main ( )
 
 /*
 ---------------------------------------------- documentacao complementar
-Queria aprender arranjo desenvolvendo na luta, consegui depois de uma hora, peco para que me diga
-sugestoes de melhoria, por favor! Quando vou rodar esta aparecendo 2 valores a mais quando vai 
-exibir a l76 no terminal, mas isso acontece apenas de vez em quando, por agora parou mas nao sei
-se esta correto!
+Usei arranjo para exibir a resposta, pois isso deixa mais organizado e vai ajudar nos proximos exercicios
 ---------------------------------------------- notas / observacoes / comentarios
-Pede uma quantidade, e para definir um intervalo. A partir daí pede uma sequencia do tamanho 
-definido pela quantidade e exibe os valores dentro e fora do intervalo.
-Por fim mostra o limite definido, a quantidade, os numeros digitados e a contagem do que esta 
-DENTRO e FORA do limite.
+Pede uma quantidade, e cria um intervalo com multiplos de um valor definido.
 ---------------------------------------------- previsao de testes
-n = 10 e [13.6:22.6] com {5.1, 10.5, 12.4, 14.2, 15.3, 18.3, 20.4, 21.7, 23.1, 24.2}
+n = 5 => { 4, 8, 12, 16, 20 }
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 23/09 esboco
+0.1 28/09 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa
