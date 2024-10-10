@@ -1,5 +1,5 @@
 /*
-    Exercicio0518 - v0.0. - 28 / 09 / 2024
+    Exercicio0520 - v0.0. - 28 / 09 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -22,9 +22,11 @@ void method_01 ( void )
 {
     // definir dado
     int n = 0;
+    int a = 0;
+    int init = 0;
     int cont = 0;
     int soma = 0;
-    int termo = 4;  // termo diferente de zero para desconsiderar o zero na resposta
+    int termo = 3;  // termo diferente de zero para desconsiderar o zero na resposta
     int resposta[100];
     
     // identificar
@@ -36,28 +38,31 @@ void method_01 ( void )
     // mostrar os valores preenchidos
     printf( "%s%d","Quantidade de termos: ",n );
 
-	int x = 1;
-    while(cont < n) // verificar se ainda nao chegou na quantidade definida
-    {                            // criar a repeticao para gravar no arranjo
-        resposta[cont] = termo;
-        termo = termo + x;
-		x = x + 1;
-        cont = cont + 1;
+    cont = n;
+    init = termo + n;
+    while(cont != 0) // verificar se ainda nao chegou na quantidade definida
+    {                            
+        resposta[a] = init;
+        a = a + 1;
+        init = init - 1;
+        cont = cont - 1;
     }
     while (getchar() != '\n') //Limpar o buffer do getchar
         continue;
 
     printf( "\nValores: " );
-    for (int i = 0; i < cont; i++) // repeticao para exibir os valores do arranjo
+    for (int i = 0; i < n; i++) // repeticao para exibir os valores do arranjo
     {
-        printf( "%d",resposta[i] );
+        printf( "%s%d","1/", resposta[i] );
         soma = soma + resposta[i];
-        if(i < (cont-1))
+        if(i < (n-1))
         {
-            printf("%s"," + ");
+            printf("%s",", ");
         }
     }
-    printf( "%s%d"," = ",soma );
+    printf( "%s%d"," = 1/",soma );
+    double r = 1.0 / (double)soma;
+    printf( "%s%lf","\nQue e igual a aproximadamente: ~",r );
     // encerrar
     
     printf( "\nApertar ENTER para continuar.\n\n" );
@@ -76,12 +81,12 @@ int main ( )
     do
     {
         // identificar
-        printf( "EXERCICIO0518 - Programa - v0.0" );
+        printf( "EXERCICIO0520 - Programa - v0.0" );
         printf("\nAutor: Daniel Alves Goncalves");
         // ler do teclado
         printf ( "\n%s\n","Opcoes" );
         printf ( "\n%s","0 - Parar");
-        printf ( "\n%s","1 - 0518" );
+        printf ( "\n%s","1 - 0520" );
         printf ( "\n" );
         
         printf ("\n%s","Entrar com uma opcao: " );
@@ -109,9 +114,10 @@ int main ( )
 Prefiri exibir a soma na mesma funcao por questoes de praticidade em vez de criar outra funcao so para isso.
 Mas poderia fazer uma funcao "int calcularSoma(x)", onde 'x' e o valor digitado, e ela devolveria apenas a soma.
 ---------------------------------------------- notas / observacoes / comentarios
-Pede uma quantidade, e cria um intervalo com numeros naturais a partir do 4, e no fim exibe a soma.
+Pede uma quantidade, e cria um intervalo com o quadrado dos numeros naturais a partir do 4, e no fim exibe a soma.
 ---------------------------------------------- previsao de testes
-n = 5 => 4 + 5 + 6 + 7 + 8 = 30
+n = 5 => 1/8 + 1/7 + 1/6 + 1/5 + 1/4 = 1/30
+Valor aproximado: 0.033333
 ---------------------------------------------- historico
 Versao Data Modificacao
 0.1 28/09 esboco

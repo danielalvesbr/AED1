@@ -36,12 +36,10 @@ void method_01 ( void )
     // mostrar os valores preenchidos
     printf( "%s%d","Quantidade de termos: ",n );
 
-	int x = 1;
     while(cont < n) // verificar se ainda nao chegou na quantidade definida
     {                            // criar a repeticao para gravar no arranjo
         resposta[cont] = termo;
-        termo = termo + x;
-		x = x + 1;
+        termo = termo + 1;
         cont = cont + 1;
     }
     while (getchar() != '\n') //Limpar o buffer do getchar
