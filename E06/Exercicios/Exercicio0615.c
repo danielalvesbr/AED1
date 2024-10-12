@@ -1,5 +1,5 @@
 /*
-    Exercicio0615 - v0.0. - 30 / 09 / 2024
+    Exercicio0615 - v1.0. - 10 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -30,22 +30,20 @@ quarto numero par 8 (vez 4)
 quinto numero par 10 (vez 5)
 24 + 10 = 34
 */
-void method_01a(int x, int atual, int soma, int incremento)
+int method_01a(int n, int x, int valor)
 {
+    int soma = 0;
     // Repetir enquanto x for maior que zero
-    if (x > 0)
+    if (n > 0)
     {
         // Mostrar o valor atual
-        IO_printf("%s%d\n", "Valor = ", atual);
+        IO_printf("%s%d\n", "Valor = ", valor);
         
         // Chamada recursiva para o próximo valor
-        method_01a(x - 1, atual + incremento, soma + atual, incremento + 2);
+        soma = method_01a(n - 1, x + 2, valor + x);
     }
-    else
-    {
-        // Mostrar a soma total quando x for 0
-        IO_printf("%s%d\n", "Soma = ", soma);
-    }
+    
+    return(soma+2*n);
 }
 
 void method_01()
@@ -53,13 +51,13 @@ void method_01()
     int x = 0;
     
     // Identificar
-    IO_id("Method_01 - v0.1");
+    IO_id("Method_01 - v1.0");
     
     // Ler o valor do usuário
     x = IO_readint("Digite um valor para a recursividade: ");
-    
+    int soma = method_01a(x, 2, 4); // Inicia com o valor x e incremento 2
     // Chamar o método recursivo com os valores iniciais
-    method_01a(x, 4, 0, 2); // Inicia com o valor 4 e incremento 2
+    printf("%s%d","Soma = ",soma);
     
     // Pausar antes de continuar
     IO_pause("Apertar ENTER para continuar");
@@ -75,7 +73,7 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0615 - Programa - v0.0");
+        IO_id("EXERCICIO0615 - Programa - v1.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
@@ -103,7 +101,9 @@ int main()
 
 /*
 ---------------------------------------------- documentacao complementar
-n/d!
+Refiz está tarefa pois nao tinha entendido direito, da ultima vez eu usei o chatgpt pra fazer pra mim e tentei entender
+entendi de certa forma oq enviei, mas nao conseguiria fazer, por isso voltei pra refazer.
+Agora fiz sozinho, mas usei a estrutura antiga pra nao escrever tudo, por isso deixei os comentarios.
 ---------------------------------------------- notas / observacoes / comentarios
 Mostrar certa quantidade de valores recursivamente(crescente), somando pares crescentes a partir do 4.
 ---------------------------------------------- previsao de testes
