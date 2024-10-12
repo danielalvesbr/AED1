@@ -1,5 +1,5 @@
 /*
-    Exercicio0618 - v0.0. - 06 / 10 / 2024
+    Exercicio0619 - v0.0. - 06 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -13,44 +13,38 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
- * Method_01a - Procedimento recursivo para contar dígitos ímpares em uma string.
+ * Method_01a - Procedimento recursivo para contar letras maiúsculas maiores que 'M' em uma string.
  * @paran s  - cadeia de caracteres
  * @paran i  - índice atual
- * @paran cont - contador de dígitos ímpares
+ * @paran cont - contador de letras maiúsculas maiores que 'M'
  */
 int method_01a(char* s, int i, int cont)
 {
     // Verificar se o índice é válido (dentro do tamanho da string)
     if (i < strlen(s))
     {
-        // Verificar se o caractere é um dígito
-        if (('0' <= s[i])&&(s[i] <= '9'))
+        // Verificar se o caractere é uma letra maiúscula e se é maior que 'M'
+        if (isupper(s[i]) && s[i] > 'M')
         {
-            // Converter o caractere para inteiro
-            int num = s[i] - '0'; // valor apontado da cadeia (s[i]) - 48 ('0') = da a diferenca, ou seja, o número
-            // Verificar se o dígito é ímpar
-            if (num % 2 != 0)
-            {
-                // Incrementar o contador de ímpares
-                cont++;
-            }
+            // Incrementar o contador
+            cont++;
         }
 
         // Chamada recursiva para o próximo caractere
         return method_01a(s, i + 1, cont);
     }
 
-    // Retornar o total de dígitos ímpares
-    return (cont);
+    // Retornar o total de maiúsculas maiores que 'M'
+    return cont;
 }
 
 /**
- * Method_01 - Ler uma cadeia de caracteres e contar os dígitos ímpares.
+ * Method_01 - Ler uma cadeia de caracteres e contar as maiúsculas maiores que 'M'.
  */
 void method_01()
 {
     char s[100]; // Vetor para armazenar a cadeia de caracteres
-    int cont = 0; // Contador de dígitos ímpares
+    int cont = 0; // Contador de maiúsculas maiores que 'M'
     
     // Identificar
     IO_id("Method_01 - v0.1");
@@ -59,11 +53,11 @@ void method_01()
     IO_printf("Digite uma cadeia de caracteres: ");
     IO_scanf("%s", s);
     
-    // Chamar o método recursivo para contar dígitos ímpares
+    // Chamar o método recursivo para contar maiúsculas maiores que 'M'
     cont = method_01a(s, 0, 0);
     
     // Exibir o resultado
-    IO_printf("Quantidade de digitos impares: %d\n", cont);
+    IO_printf("Quantidade de maiusculas maiores que 'M': %d\n", cont);
     
     // Pausar antes de continuar
     IO_pause("Apertar ENTER para continuar");
@@ -79,11 +73,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0618 - Programa - v0.0");
+        IO_id("EXERCICIO0619 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0618");
+        IO_println("1 - 0619");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -109,7 +103,7 @@ int main()
 ---------------------------------------------- documentacao complementar
 n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de caracteres recursivamente(crescente), e contar dígitos ímpares.
+Mostrar certa quantidade de caracteres recursivamente(crescente), e contar dígitos maiores que 'M'.
 ---------------------------------------------- previsao de testes
 sequência = "P4LaVr@1"
 ---------------------------------------------- historico

@@ -1,5 +1,5 @@
 /*
-    Exercicio0617 - v0.0. - 06 / 10 / 2024
+    Exercicio0613 - v0.0. - 30 / 09 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -13,45 +13,41 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
- * Method_01a - Procedimento recursivo para mostrar cada caractere da string.
- * @paran  - cadeia de caracteres
- * @paran  - índice atual
- */
-void method_01a(char* palavra, int i)
+Method_01a - Mostrar certa quantidade de valores recursivamente.
+@param x - quantidade de valores a serem mostrados
+*/
+void method_01a(int x)
 {
-    // Verificar se o índice é válido (dentro do tamanho da string)
-    if (i < strlen(palavra))
+    // repetir enquanto valor maior que zero
+    if (x > 0)
     {
-        // Mostrar o caractere atual
-        IO_printf("%c\n", palavra[i]);
-        
-        // Chamada recursiva para o próximo caractere
-        method_01a(palavra, i + 1);
-    }
-}
-
+        // passar ao proximo
+        method_01a(x - 1); // motor da recursividade
+                           // mostrar valor
+        if (x - 1 < 1)
+        {
+            IO_printf("%s\n", "Valor = 1/1");
+        }
+        else
+        {
+            IO_printf("%s%d\n", "Valor = 1/", (x - 1) * 4);
+        }
+    } // end if
+} // end method_01a( )
 /**
- * Method_01 - Ler uma cadeia de caracteres e mostrar cada caractere separadamente.
- */
+Method_01.
+*/
 void method_01()
 {
-    char cadeia[100]; // Vetor para armazenar a cadeia de caracteres
-    
-    // Identificar
-    IO_id("Method_01 - v0.1");
-    
-    // Ler a cadeia de caracteres do usuário
-    IO_printf("Digite uma cadeia de caracteres: ");
-    IO_scanf("%s", cadeia);
-    
-    // Chamar o procedimento recursivo para exibir cada caractere
-    method_01a(cadeia, 0);
-    
-    // Pausar antes de continuar
+    int x = 0;
+    // identificar
+    IO_id("Method_01 - v0.0");
+    // executar o metodo auxiliar
+    x = IO_readint("Digite um valor para a recursividade: ");
+    method_01a(x); // motor da recursividade
+    // encerrar
     IO_pause("Apertar ENTER para continuar");
-}
-
-
+} // end method_01 ( )
 
 int main()
 {
@@ -61,11 +57,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0617 - Programa - v0.0");
+        IO_id("EXERCICIO0613 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0617");
+        IO_println("1 - 0613");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -91,12 +87,12 @@ int main()
 ---------------------------------------------- documentacao complementar
 n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de caracteres recursivamente(crescente), um por linha.
+Mostrar certa quantidade de valores recursivamente(crescente), inversos de 4 comecando do 1/1, 1/4, 1/8...
 ---------------------------------------------- previsao de testes
-sequência = "abcde"
+valor = 5 => { 1/1, 1/4, 1/8, 1/12, 1/16 }
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 06/10 esboco
+0.1 30/09 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa
