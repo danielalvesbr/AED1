@@ -13,14 +13,21 @@ void method_00(void)
     // nao faz nada
 } // end method_00 ( )
 
-int fibonacci(int n, int valor)
+int fib(int n)
 {
     if (n <= 1) // se o n for menor ou igual a 1, a sequencia precisa nem iniciar
     {
         return n;
     }
-    //motor da recursao
-    return ((fibonacci(n - 1) + fibonacci(n - 2)), valor + 1);
+    return (fib(n - 1) + fib(n - 2));
+}
+
+int fibonacci(int n, int valor)
+{
+    int x = fib(valor);
+
+    // Motor da recursao
+    return fibonacci(n, valor + 1);
 }
 
 /**
