@@ -1,9 +1,10 @@
 /*
-    Exercicio0615 - v1.0. - 10 / 10 / 2024
+    Exercicio0715 - v0.0. - 13 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
 #include "io.h" // para definicoes proprias
+#include "math.h"
 /**
 Method_00 - nao faz nada.
 */
@@ -13,58 +14,43 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
-Method_01a - Mostrar certa quantidade de valores recursivamente.
-@param x - quantidade de valores a serem mostrados
-@param atual - valor
-@param soma
-
-começa no 4
-primeiro numero par 2 (vez 1)
-4 + 2 = 6
-segundo numero par 4 (vez 2)
-6 + 4 = 10
-terceiro numero par 6 (vez 3)
-10 + 6 = 16
-quarto numero par 8 (vez 4)
-16 + 8 = 24
-quinto numero par 10 (vez 5)
-24 + 10 = 34
+Escrever no Arquivo
 */
-int method_01a(int n, int x, int valor)
+void wArquivo(chars fileName, int n, int x)
 {
-    int soma = 0;
-    // Repetir enquanto x for maior que zero
-    if (n > 0)
-    {
-        // Mostrar o valor atual
-        IO_printf("%s%d\n", "Valor = ", valor);
-        
-        // Chamada recursiva para o próximo valor
-        soma = method_01a(n - 1, x + 2, valor + x);
-        soma = soma + valor;
-    }
-    
-    return(soma);
-}
+    FILE* arquivo = fopen(fileName,"wt");
 
+    for(int i = 0; i <= n-1; i++)
+    {
+        if(i == 0)
+        {
+            fprintf(arquivo, "%s", "1 ");
+        }
+        else
+        {
+            fprintf(arquivo, "1/%d ", (int)pow(x,i));
+        }
+    }
+    fclose(arquivo);
+} 
+/**
+Method_01.
+*/
 void method_01()
 {
+    int n = 0;
     int x = 0;
-    
-    // Identificar
-    IO_id("Method_01 - v1.0");
-    
-    // Ler o valor do usuário
-    x = IO_readint("Digite um valor para a recursividade: ");
-    int soma = method_01a(x, 2, 4); // Inicia com o valor x e incremento 2
-    // Chamar o método recursivo com os valores iniciais
-    printf("%s%d","Soma = ",soma);
-    
-    // Pausar antes de continuar
+    // identificar
+    IO_id("Method_01 - v0.0");
+    // executar o metodo auxiliar
+    printf("%s","Digite um valor inteiro: ");
+    scanf("%d",&n);
+    printf("%s","Digite um valor real para a base das potencias: ");
+    scanf("%d",&x);
+    wArquivo("EX0715.TXT", n, x);
+    // encerrar
     IO_pause("Apertar ENTER para continuar");
-}
-
-
+} // end method_01 ( )
 
 int main()
 {
@@ -74,11 +60,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0615 - Programa - v1.0");
+        IO_id("EXERCICIO0715 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0615");
+        IO_println("1 - 0715");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -102,16 +88,15 @@ int main()
 
 /*
 ---------------------------------------------- documentacao complementar
-Refiz está tarefa pois nao tinha entendido direito, da ultima vez eu usei o chatgpt pra fazer e ate
-entendi de certa forma oq enviei, mas nao conseguiria replicar, por isso voltei pra refazer.
-Agora fiz sozinho, mas usei a estrutura antiga pra nao escrever tudo, por isso deixei os comentarios.
+n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de valores recursivamente(crescente), somando pares crescentes a partir do 4.
+n/d
 ---------------------------------------------- previsao de testes
-valor = 5 => { 4, 6, 10, 16, 24 }
+n = x => { 1, 1/x^2, 1/x^4, 1/x^6, 1/x^8 }
+Ex: n = 3 => {1 1/3 1/9 1/27 1/81 }
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 30/09 esboco
+0.1 13/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

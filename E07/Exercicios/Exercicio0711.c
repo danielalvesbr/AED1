@@ -1,5 +1,5 @@
 /*
-    Exercicio0711 - v0.0. - 10 / 11 / 2024
+    Exercicio0711 - v0.0. - 11 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -13,20 +13,26 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
-Method_01a - Mostrar certa quantidade de valores recursivamente.
-@param x - quantidade de valores a serem mostrados
+Escrever no Arquivo
 */
-void method_01a(int x)
+void wArquivo(chars fileName, int x)
 {
-    // repetir enquanto valor maior que zero
-    if (x > 0)
+    FILE* arquivo = fopen(fileName,"wt");
+
+    for(int i = 1; i <= x; i++)
     {
-        // passar ao proximo
-        method_01a(x - 1); // motor da recursividade
-        // mostrar valor
-        IO_printf("%s%d\n", "Valor = ", x * 4);
-    } // end if
-} // end method_01a( )
+        if(!(i % 2 == 0)) // se impar
+        {
+            fprintf(arquivo, "%d ", i*3);
+        }
+        else
+        {
+            x = x + 1; // prolonga o numero de testes
+        }
+    }
+
+    fclose(arquivo);
+} 
 /**
 Method_01.
 */
@@ -36,8 +42,9 @@ void method_01()
     // identificar
     IO_id("Method_01 - v0.0");
     // executar o metodo auxiliar
-    x = IO_readint("Digite um valor para a recursividade: ");
-    method_01a(x); // motor da recursividade
+    printf("%s","Digite um valor: ");
+    scanf("%d",&x);
+    wArquivo("EX0711.TXT", x);
     // encerrar
     IO_pause("Apertar ENTER para continuar");
 } // end method_01 ( )
@@ -50,11 +57,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0611 - Programa - v0.0");
+        IO_id("EXERCICIO0711 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0611");
+        IO_println("1 - 0711");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -85,7 +92,7 @@ n/d
 n = 5 => { 3, 9, 15, 21, 27 }
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 30/09 esboco
+0.1 11/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

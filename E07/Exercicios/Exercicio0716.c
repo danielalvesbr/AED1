@@ -1,9 +1,10 @@
 /*
-    Exercicio0616 - v1.0. - 10 / 10 / 2024
+    Exercicio0716 - v0.0. - 13 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
 #include "io.h" // para definicoes proprias
+#include "math.h"
 /**
 Method_00 - nao faz nada.
 */
@@ -13,58 +14,56 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
-Method_01a - Mostrar certa quantidade de valores recursivamente.
-@param x - quantidade de valores a serem mostrados
-@param atual - valor
-@param soma
-
-começa no 4
-primeiro numero par 2 (vez 1)
-4 + 2 = 6
-segundo numero par 4 (vez 2)
-6 + 4 = 10
-terceiro numero par 6 (vez 3)
-10 + 6 = 16
-quarto numero par 8 (vez 4)
-16 + 8 = 24
-quinto numero par 10 (vez 5)
-24 + 10 = 34
+Escrever no Arquivo
 */
-int method_01a(int n, int x, int valor)
+void somaArquivo(chars fileIn, chars fileOut, int n)
 {
+    FILE* entrada = fopen(fileIn, "rt");
+    FILE* saida   = fopen(fileOut,"wt");
+    int bkp = n;
     int soma = 0;
-    // Repetir enquanto x for maior que zero
-    if (n > 0)
-    {
-        // Mostrar o valor atual
-        IO_printf("%s%d\n", "Valor = 1/", valor);
-        
-        // Chamada recursiva para o próximo valor
-        soma = method_01a(n - 1, x + 2, valor + x);
-        soma = soma + valor;
-    }
-    
-    return(soma);
-}
 
+    if((entrada == NULL)||(saida == NULL))
+    {
+        printf("\n\nErro ao abrir o arquivos.\n");
+        return;
+    }
+
+    for(int i = 0; i < bkp; i++)
+    {
+        if(fscanf(entrada," 1/%d", &n) == 1)
+        {
+            soma = soma + n;
+            printf("Lido: 1/%d\n", n);
+        }
+        else
+        {
+            printf("Erro ao ler a linha\n"); // Isso indica quando a primeira linha foi lida
+            // pois a primeira linha e diferente da estrutura da l35, (1/%d)
+        }
+    }
+    fclose(entrada);
+
+    fprintf(saida, "1/%d ", soma);
+    fclose(saida);
+
+    printf("Resultado gravado no arquivo.\n");
+} 
+/**
+Method_01.
+*/
 void method_01()
 {
-    int x = 0;
-    
-    // Identificar
-    IO_id("Method_01 - v1.0");
-    
-    // Ler o valor do usuário
-    x = IO_readint("Digite um valor para a recursividade: ");
-    int soma = method_01a(x, 2, 4); // Inicia com o valor x e incremento 2
-    // Chamar o método recursivo com os valores iniciais
-    printf("%s%d","Soma = 1/",soma);
-    
-    // Pausar antes de continuar
+    int n = 0;
+    // identificar
+    IO_id("Method_01 - v0.0");
+    // executar o metodo auxiliar
+    printf("%s","Digite um valor inteiro para representar os valores a serem somados: ");
+    scanf("%d",&n);
+    somaArquivo("EX0715.TXT","RESULTADO06.TXT", n);
+    // encerrar
     IO_pause("Apertar ENTER para continuar");
-}
-
-
+} // end method_01 ( )
 
 int main()
 {
@@ -74,11 +73,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0616 - Programa - v1.0");
+        IO_id("EXERCICIO0716 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0616");
+        IO_println("1 - 0716");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -102,16 +101,14 @@ int main()
 
 /*
 ---------------------------------------------- documentacao complementar
-Refiz está tarefa pois nao tinha entendido direito, da ultima vez eu usei o chatgpt pra fazer pra mim e tentei entender
-entendi de certa forma oq enviei, mas nao conseguiria fazer, por isso voltei pra refazer.
-Agora fiz sozinho, mas usei a estrutura antiga pra nao escrever tudo, por isso deixei os comentarios.
+n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de valores recursivamente(crescente), somando pares crescentes a partir do 4.
+n/d
 ---------------------------------------------- previsao de testes
-valor = 5 => { 1/4, 1/6, 1/10, 1/16, 1/24 }
+n/d
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 30/09 esboco
+0.1 13/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

@@ -1,9 +1,10 @@
 /*
-    Exercicio0618 - v0.0. - 06 / 10 / 2024
+    Exercicio0717 - v0.0. - 22 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
 #include "io.h" // para definicoes proprias
+#include "math.h"
 /**
 Method_00 - nao faz nada.
 */
@@ -12,64 +13,59 @@ void method_00(void)
     // nao faz nada
 } // end method_00 ( )
 
-/**
- * Method_01a - Procedimento recursivo para contar dígitos ímpares em uma string.
- * @paran s  - cadeia de caracteres
- * @paran i  - índice atual
- * @paran cont - contador de dígitos ímpares
- */
-int method_01a(char* s, int i, int cont)
+int fibonacci(int n, int valor)
 {
-    // Verificar se o índice é válido (dentro do tamanho da string)
-    if (i < strlen(s))
+    if (n <= 1) // se o n for menor ou igual a 1, a sequencia precisa nem iniciar
     {
-        // Verificar se o caractere é um dígito
-        if (('0' <= s[i])&&(s[i] <= '9'))
-        {
-            // Converter o caractere para inteiro
-            int num = s[i] - '0'; // valor apontado da cadeia (s[i]) - 48 ('0') = da a diferenca, ou seja, o número
-            // Verificar se o dígito é ímpar
-            if (num % 2 != 0)
-            {
-                // Incrementar o contador de ímpares
-                cont++;
-            }
-        }
+        return n;
+    }
+    //motor da recursao
+    return ((fibonacci(n - 1) + fibonacci(n - 2)), valor + 1);
+}
 
-        // Chamada recursiva para o próximo caractere
-        return method_01a(s, i + 1, cont);
+/**
+Escrever no Arquivo
+*/
+void somaArquivo(chars fileOut, int n)
+{
+    FILE* saida   = fopen(fileOut,"wt");
+    int bkp = n;
+    int x = 0;
+
+    if((saida == NULL))
+    {
+        printf("\n\nErro ao abrir o arquivos.\n");
+        return;
     }
 
-    // Retornar o total de dígitos ímpares
-    return (cont);
-}
+    for(int i = 0; i < bkp; i++)
+    {
+        if(fscanf(saida," 1/%d", &n) == 1)
+        {
+            n = fibonacci(bkp, x);
+            printf("%d ", n);
+            fprintf(saida, "%d ", n);
+        }
+    }
+    fclose(saida);
 
+    printf("Resultado gravado no arquivo.\n");
+} 
 /**
- * Method_01 - Ler uma cadeia de caracteres e contar os dígitos ímpares.
- */
+Method_01.
+*/
 void method_01()
 {
-    char s[100]; // Vetor para armazenar a cadeia de caracteres
-    int cont = 0; // Contador de dígitos ímpares
-    
-    // Identificar
-    IO_id("Method_01 - v0.1");
-    
-    // Ler a cadeia de caracteres do usuário
-    IO_printf("Digite uma cadeia de caracteres: ");
-    IO_scanf("%s", s);
-    
-    // Chamar o método recursivo para contar dígitos ímpares
-    cont = method_01a(s, 0, 0);
-    
-    // Exibir o resultado
-    IO_printf("Quantidade de digitos impares: %d\n", cont);
-    
-    // Pausar antes de continuar
+    int n = 0;
+    // identificar
+    IO_id("Method_01 - v0.0");
+    // executar o metodo auxiliar
+    printf("%s","Digite um valor inteiro para representar os valores a serem somados: ");
+    scanf("%d",&n);
+    somaArquivo("RESULTADO08.TXT", n);
+    // encerrar
     IO_pause("Apertar ENTER para continuar");
-}
-
-
+} // end method_01 ( )
 
 int main()
 {
@@ -79,11 +75,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0618 - Programa - v0.0");
+        IO_id("EXERCICIO0717 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0618");
+        IO_println("1 - 0717");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -107,14 +103,14 @@ int main()
 
 /*
 ---------------------------------------------- documentacao complementar
-n/d!
+n/d
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de caracteres recursivamente(crescente), e contar dígitos ímpares.
+n/d
 ---------------------------------------------- previsao de testes
-sequência = "P4LaVr@1"
+n/d
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 06/10 esboco
+0.1 22/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

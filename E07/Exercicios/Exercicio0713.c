@@ -1,9 +1,10 @@
 /*
-    Exercicio0613 - v0.0. - 30 / 09 / 2024
+    Exercicio0713 - v0.0. - 11 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
 #include "io.h" // para definicoes proprias
+#include "math.h"
 /**
 Method_00 - nao faz nada.
 */
@@ -13,27 +14,18 @@ void method_00(void)
 } // end method_00 ( )
 
 /**
-Method_01a - Mostrar certa quantidade de valores recursivamente.
-@param x - quantidade de valores a serem mostrados
+Escrever no Arquivo
 */
-void method_01a(int x)
+void wArquivo(chars fileName, int x)
 {
-    // repetir enquanto valor maior que zero
-    if (x > 0)
+    FILE* arquivo = fopen(fileName,"wt");
+    int y = 4;
+    for(int i = 0; i <= x-1; i++)
     {
-        // passar ao proximo
-        method_01a(x - 1); // motor da recursividade
-                           // mostrar valor
-        if (x - 1 < 1)
-        {
-            IO_printf("%s\n", "Valor = 1/1");
-        }
-        else
-        {
-            IO_printf("%s%d\n", "Valor = 1/", (x - 1) * 4);
-        }
-    } // end if
-} // end method_01a( )
+        fprintf(arquivo, "%d ", (int)pow(y,i));
+    }
+    fclose(arquivo);
+} 
 /**
 Method_01.
 */
@@ -43,8 +35,9 @@ void method_01()
     // identificar
     IO_id("Method_01 - v0.0");
     // executar o metodo auxiliar
-    x = IO_readint("Digite um valor para a recursividade: ");
-    method_01a(x); // motor da recursividade
+    printf("%s","Digite um valor: ");
+    scanf("%d",&x);
+    wArquivo("EX0713.TXT", x);
     // encerrar
     IO_pause("Apertar ENTER para continuar");
 } // end method_01 ( )
@@ -57,11 +50,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0613 - Programa - v0.0");
+        IO_id("EXERCICIO0713 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0613");
+        IO_println("1 - 0713");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -87,12 +80,12 @@ int main()
 ---------------------------------------------- documentacao complementar
 n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Mostrar certa quantidade de valores recursivamente(crescente), inversos de 4 comecando do 1/1, 1/4, 1/8...
+n/d
 ---------------------------------------------- previsao de testes
-valor = 5 => { 1/1, 1/4, 1/8, 1/12, 1/16 }
+n = 5 => { 1, 4, 16, 64, 256 }
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 30/09 esboco
+0.1 11/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

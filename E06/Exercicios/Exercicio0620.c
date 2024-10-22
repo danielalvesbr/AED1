@@ -14,7 +14,7 @@ void method_00(void)
 
 int fib(int n)
 {
-    if (n <= 1)
+    if (n <= 1) // se o n for menor ou igual a 1, a sequencia precisa nem iniciar
     {
         return n;
     }
@@ -22,53 +22,50 @@ int fib(int n)
 }
 
 /**
- * Method_01a - Procedimento recursivo para somar os primeiros 'quantidade' termos pares da série de Fibonacci.
- * @paran quantidade - número de termos pares a somar
- * @paran termo_atual - índice do termo atual da série de Fibonacci
+ Method_01a - Procedimento recursivo para somar os primeiros 'quantidade' termos pares da série de Fibonacci.
+ * @paran n - número de termos pares a somar
+ * @paran valor - índice do termo atual da série de Fibonacci
  * @paran soma - acumulador da soma dos termos pares
- * @paran encontrados - contador de termos pares encontrados
+ * @paran pares - contador de termos pares
  */
-int method_01a(int quantidade, int termo_atual, int soma, int encontrados)
+int method_01a(int n, int valor, int soma, int pares)
 {
-    int valor_fib = fib(termo_atual);
+    int x = fib(valor);
 
-    // Se a quantidade de termos pares desejados já foi encontrada, retornar a soma
-    if (encontrados == quantidade)
+    if (pares == n)         // pares e igual a n(numero digitado), se sim acabar
     {
         return soma;
     }
-
-    // Verificar se o termo atual da série de Fibonacci é par
-    if (valor_fib % 2 == 0)
+    else if ((x != 0) && (x % 2 == 0))    // se x for diferente de zero e for um valor par
     {
-        // Incrementar a soma com o termo atual e aumentar o contador de pares encontrados
-        soma += valor_fib;
-        encontrados++;
+        printf("%d - Valor e par: %d\n", pares+1, x); //
+        soma = soma + x;    // adiciona o valor a soma
+        pares = pares + 1;            // incrementa pares
     }
 
-    // Chamar recursivamente com o próximo termo
-    return method_01a(quantidade, termo_atual + 1, soma, encontrados);
+    // Motor da recursao
+    return method_01a(n, valor + 1, soma, pares);
 }
 
 /**
- * Method_01 - Ler um valor e calcular a soma dos primeiros termos pares da série de Fibonacci.
+ Method_01 - Ler um valor e calcular a soma dos primeiros termos pares da série de Fibonacci.
  */
 void method_01()
 {
-    int quantidade = 0; // Número de termos pares desejados
+    int n = 0; // Número de termos pares desejados
     int soma = 0; // Acumulador da soma
     
     // Identificar
     IO_id("Method_01 - v0.1");
     
     // Ler o número de termos pares desejados
-    quantidade = IO_readint("Digite a quantidade de termos pares da serie de Fibonacci a somar: ");
+    n = IO_readint("Digite a quantidade de termos pares da serie de Fibonacci a somar: ");
     
     // Chamar o método recursivo para somar os primeiros termos pares
-    soma = method_01a(quantidade, 0, 0, 0);
+    soma = method_01a(n, 0, 0, 0);
     
     // Exibir o resultado
-    IO_printf("Soma dos %d primeiros termos pares da serie de Fibonacci: %d\n", quantidade, soma);
+    IO_printf("Soma dos %d primeiros termos pares da serie de Fibonacci: %d\n", n, soma);
     
     // Pausar antes de continuar
     IO_pause("Apertar ENTER para continuar");
@@ -114,10 +111,11 @@ int main()
 ---------------------------------------------- documentacao complementar
 n/d!
 ---------------------------------------------- notas / observacoes / comentarios
-Calcular certo termo par da série de Fibonacci começando em 1.
-Testar essa função para quantidades diferentes.
+Refiz pois enviei da ultima vez sem ter feito, eu pedi ao chat para completar apenas a 10 para poder enviar a tarefa.
+Enfim, na linha 39 o valor de (x!=0) se deve ao fato de eu prefiro utilizar a condicao de terminar da l35 (pares == n)
+em vez de (pares == n+1), se eu nao fizesse uma dessas duas coisas o codigo ia fazer uma vez a menos do valor digitado.
 ---------------------------------------------- previsao de testes
-valor = 3 => 2+8+34
+valor = 3 => 2+8+34, soma exibida deve ser 44
 ---------------------------------------------- historico
 Versao Data Modificacao
 0.1 06/10 esboco
