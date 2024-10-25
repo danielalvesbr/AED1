@@ -1,1 +1,0 @@
-Algarismos menores que 5 (alg <= 4): 10
