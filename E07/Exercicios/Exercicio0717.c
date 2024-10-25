@@ -13,9 +13,6 @@ void method_00(void)
     // nao faz nada
 } // end method_00 ( )
 
-/**
-Escrever no Arquivo
-*/
 void somaArquivo(chars fileIn, chars fileOut, int n)
 {
     FILE* entrada = fopen(fileIn, "rt");
@@ -48,6 +45,7 @@ void somaArquivo(chars fileIn, chars fileOut, int n)
 
     printf("Resultado gravado no arquivo.\n");
 } 
+
 /**
 Method_01.
 */

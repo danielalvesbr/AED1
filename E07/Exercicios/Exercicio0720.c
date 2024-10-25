@@ -1,9 +1,10 @@
 /*
-    Exercicio0620 - v0.0. - 06 / 10 / 2024
+    Exercicio0720 - v0.0. - 25 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
 #include "io.h" // para definicoes proprias
+#include "math.h"
 /**
 Method_00 - nao faz nada.
 */
@@ -12,69 +13,86 @@ void method_00(void)
     // nao faz nada
 } // end method_00 ( )
 
-int fib(int n)
+/**
+Escrever no Arquivo
+*/
+void wArquivo(const char* fileOut, const char* p)
 {
-    if (n <= 1)
+    FILE *arquivo = fopen(fileOut, "wt");
+
+    if ((arquivo == NULL))
     {
-        return n;
+        printf("\n\nErro ao abrir o arquivos.\n");
+        return;
     }
-    return fib(n - 1) + fib(n - 2);
+
+    printf("\n%s", p);
+    fprintf(arquivo, "%s", p);
+
+    fclose(arquivo);
+    printf("\n\nResultado gravado no arquivo.\n");
+}
+
+void contaArquivo(const char *fileIn, const char *fileOut)
+{
+    FILE *entrada = fopen(fileIn, "rt");
+    FILE *saida = fopen(fileOut, "wt");
+    int soma = 0;
+    char linha[100];
+
+    if ((entrada == NULL) || (saida == NULL))
+    {
+        printf("\n\nErro ao abrir os arquivos.\n");
+        return;
+    }
+
+    while (fgets(linha, sizeof(linha), entrada) != NULL)
+    {
+        soma = 0;
+        for (int i = 0; linha[i] != '\0'; i++)
+        {
+            if ('0' <= linha[i] && linha[i] <= '4')
+            {
+                soma++;
+            }
+        }
+        fprintf(saida, "Algarismos menores que 5 (alg <= 4): %d\n", soma);
+    }
+    fclose(entrada);
+    fclose(saida);
+
+    printf("Resultado gravado no arquivo.\n");
 }
 
 /**
- * Method_01a - Procedimento recursivo para somar os primeiros 'quantidade' termos pares da série de Fibonacci.
- * @paran quantidade - número de termos pares a somar
- * @paran termo_atual - índice do termo atual da série de Fibonacci
- * @paran soma - acumulador da soma dos termos pares
- * @paran encontrados - contador de termos pares encontrados
- */
-int method_01a(int quantidade, int termo_atual, int soma, int encontrados)
-{
-    int valor_fib = fib(termo_atual);
-
-    // Se a quantidade de termos pares desejados já foi encontrada, retornar a soma
-    if (encontrados == quantidade)
-    {
-        return soma;
-    }
-
-    // Verificar se o termo atual da série de Fibonacci é par
-    if (valor_fib % 2 == 0)
-    {
-        // Incrementar a soma com o termo atual e aumentar o contador de pares encontrados
-        soma += valor_fib;
-        encontrados++;
-    }
-
-    // Chamar recursivamente com o próximo termo
-    return method_01a(quantidade, termo_atual + 1, soma, encontrados);
-}
-
-/**
- * Method_01 - Ler um valor e calcular a soma dos primeiros termos pares da série de Fibonacci.
- */
+Method_01.
+*/
 void method_01()
 {
-    int quantidade = 0; // Número de termos pares desejados
-    int soma = 0; // Acumulador da soma
-    
-    // Identificar
-    IO_id("Method_01 - v0.1");
-    
-    // Ler o número de termos pares desejados
-    quantidade = IO_readint("Digite a quantidade de termos pares da serie de Fibonacci a somar: ");
-    
-    // Chamar o método recursivo para somar os primeiros termos pares
-    soma = method_01a(quantidade, 0, 0, 0);
-    
-    // Exibir o resultado
-    IO_printf("Soma dos %d primeiros termos pares da serie de Fibonacci: %d\n", quantidade, soma);
-    
-    // Pausar antes de continuar
+    char linha[100];
+    // identificar
+    IO_id("Method_01 - v0.0");
+    // executar o metodo auxiliar
+    printf("%s", "Digite uma sequencia de caracteres: ");
+    fgets(linha, sizeof(linha), stdin);
+    wArquivo("PALAVRAS.TXT", linha);
+    // encerrar
     IO_pause("Apertar ENTER para continuar");
-}
+} // end method_01 ( )
 
-
+/**
+Method_02.
+*/
+void method_02()
+{
+    // identificar
+    IO_id("Method_02 - v0.0");
+    // executar o metodo auxiliar
+    contaArquivo("PALAVRAS.TXT", "RESULTADO10.TXT");
+    printf("%s", "\nValor gravado com sucesso!\n");
+    // encerrar
+    IO_pause("Apertar ENTER para continuar");
+} // end method_01 ( )
 
 int main()
 {
@@ -84,11 +102,12 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0620 - Programa - v0.0");
+        IO_id("EXERCICIO0720 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0620");
+        IO_println("1 - Escrever palavras em arquivo (Palavras)");
+        IO_println("2 - 0720");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -99,6 +118,9 @@ int main()
             break;
         case 1:
             method_01();
+            break;
+        case 2:
+            method_02();
             break;
         default:
             IO_pause(IO_concat("Valor diferente das opcoes [0,1] (",
@@ -112,15 +134,14 @@ int main()
 
 /*
 ---------------------------------------------- documentacao complementar
-n/d!
+n/d
 ---------------------------------------------- notas / observacoes / comentarios
-Calcular certo termo par da série de Fibonacci começando em 1.
-Testar essa função para quantidades diferentes.
+n/d
 ---------------------------------------------- previsao de testes
-valor = 3 => 2+8+34
+n/d
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 06/10 esboco
+0.1 25/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa

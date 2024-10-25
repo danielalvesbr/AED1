@@ -1,5 +1,5 @@
 /*
-    Exercicio0717 - v0.0. - 22 / 10 / 2024
+    Exercicio0718 - v0.0. - 25 / 10 / 2024
     Autor: Daniel Alves Goncalves
 */
 // dependencias
@@ -22,42 +22,32 @@ int fib(int n)
     return (fib(n - 1) + fib(n - 2));
 }
 
-int fibonacci(int n, int valor)
-{
-    int x = fib(valor);
-
-    // Motor da recursao
-    return fibonacci(n, valor + 1);
-}
-
 /**
 Escrever no Arquivo
 */
 void somaArquivo(chars fileOut, int n)
 {
-    FILE* saida   = fopen(fileOut,"wt");
+    FILE *arquivo = fopen(fileOut, "wt");
     int bkp = n;
-    int x = 0;
+    int x = 1;
 
-    if((saida == NULL))
+    if ((arquivo == NULL))
     {
         printf("\n\nErro ao abrir o arquivos.\n");
         return;
     }
 
-    for(int i = 0; i < bkp; i++)
+    for (int i = 0; i < bkp; i++)
     {
-        if(fscanf(saida," 1/%d", &n) == 1)
-        {
-            n = fibonacci(bkp, x);
-            printf("%d ", n);
-            fprintf(saida, "%d ", n);
-        }
+        n = fib(x);
+        x = x + 1;
+        printf("%d ", n);
+        fprintf(arquivo, "%d ", n);
     }
-    fclose(saida);
+    fclose(arquivo);
 
-    printf("Resultado gravado no arquivo.\n");
-} 
+    printf("\n\nResultado gravado no arquivo.\n");
+}
 /**
 Method_01.
 */
@@ -67,8 +57,8 @@ void method_01()
     // identificar
     IO_id("Method_01 - v0.0");
     // executar o metodo auxiliar
-    printf("%s","Digite um valor inteiro para representar os valores a serem somados: ");
-    scanf("%d",&n);
+    printf("%s", "Digite um valor inteiro para representar os valores a serem somados: ");
+    scanf("%d", &n);
     somaArquivo("RESULTADO08.TXT", n);
     // encerrar
     IO_pause("Apertar ENTER para continuar");
@@ -82,11 +72,11 @@ int main()
     do
     {
         // identificar
-        IO_id("EXERCICIO0717 - Programa - v0.0");
+        IO_id("EXERCICIO0718 - Programa - v0.0");
         // ler do teclado
         IO_println("Opcoes");
         IO_println("0 - Parar");
-        IO_println("1 - 0717");
+        IO_println("1 - 0718");
         IO_println("");
         x = IO_readint("Entrar com uma opcao: ");
         // testar valor
@@ -117,7 +107,7 @@ n/d
 n/d
 ---------------------------------------------- historico
 Versao Data Modificacao
-0.1 22/10 esboco
+0.1 25/10 esboco
 ---------------------------------------------- testes
 Versao Teste
 0.1 01. ( OK ) identificacao de programa
