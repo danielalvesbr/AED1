@@ -528,39 +528,17 @@ int main()
         // testar valor
         switch (x)
         {
-        case 0:
-            method_00();
-            break;
-        case 1:
-            method_01();
-            break;
-        case 2:
-            method_02();
-            break;
-        case 3:
-            method_03();
-            break;
-        case 4:
-            method_04();
-            break;
-        case 5:
-            method_05();
-            break;
-        case 6:
-            method_06();
-            break;
-        case 7:
-            method_07();
-            break;
-        case 8:
-            method_08();
-            break;
-        case 9:
-            method_09();
-            break;
-        case 10:
-            method_10();
-            break;
+        case 0:  method_00(); break;
+        case 1:  method_01(); break;
+        case 2:  method_02(); break;
+        case 3:  method_03(); break;
+        case 4:  method_04(); break;
+        case 5:  method_05(); break;
+        case 6:  method_06(); break;
+        case 7:  method_07(); break;
+        case 8:  method_08(); break;
+        case 9:  method_09(); break;
+        case 10: method_10(); break;
         default:
             IO_pause(IO_concat("Valor diferente das opcoes [0,1,2,3,4,5,6,7,8,9] (",
                                IO_concat(IO_toString_d(x), ")")));
